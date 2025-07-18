@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="/static/css/multiplayerstyle.css">
+    <link rel="shortcut icon" href="/static/images/logo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body class="animated-bg">
+    <div class="side-bar">
+        <div class="drag-handle"></div>
+        <div class="player-count animated-bg-text">
+            <h3 id="playerCounter">Players Online: {{playerCount}}</h3>   
+        </div> 
+        <div class="message-board">         
+        </div>
+        <div class="input-box">
+            <input type="text" name="" id="chatInput" placeholder="type something👇">
+            <button id="msgbutton">send</button>
+        </div>
+    </div>
+    <div class="canvas-cover">
+        <!-- CREATE ROOM BOX -->
+        <div class="room-box hidden" id="create-room-box">
+            <h3 class="gradient-heading">Create Room</h3>
+
+            <div class="input-wrapper">
+                <button class="back-button" onclick="createRoomLeave()">← back</button>
+                <input id="room-code" class="room-input readonly" type="text" value="ABC123" readonly>
+                <button id="copy-btn" class="icon-btn" title="Copy room code">📋</button>
+            </div>
+
+            <div class="waiting">
+                <div class="spinner"></div>
+                <span class="waiting-text">Waiting for player to join…</span>
+            </div>
+        </div>
+
+            <!-- JOIN ROOM BOX -->
+        <div class="room-box hidden" id="join-room-box">
+            <h3 class="gradient-heading" id="join-room-text">Join Room</h3>
+
+            <div class="input-wrapper">
+                <button class="back-button" onclick="joinRoomLeave()">← back</button>
+                <input id="join-code" class="room-input" type="text" placeholder="Enter room code">
+                <button id="join-btn" class="action-btn">Join</button>
+            </div>
+        </div>
+
+        <div class="game-over-box hidden" id="game-over-box">
+            <h2 class="game-result-text animated-bg-text" id="game-result-text">You Win !</h2>
+
+            <div class="trophy-space" id="trophy-area">
+                <!-- You can populate this dynamically -->
+                <!-- Example: <p>🏆 +5 Trophies</p> -->
+            </div>
+
+            <button onclick="routetoMainmenu()" class="play-again-btn img-div animated-bg-text">ok!</button>
+        </div>
+
+        <div class="matchmaking-box hidden" id="matchmaking-box">
+            <button class="back-button" onclick="cancelMatchmaking()">← back</button>
+            <div class="spinner"></div>
+            <div id="matchmaking-timer" class="matchmaking-timer animated-bg-text">00:00</div>
+            <h2 class="animated-bg-text match-text">Sit tight, finding you a match…</h2>
+            <button id="confirm-match-btn" class="confirm-button hidden" onclick="matchConfirmed()">Confirm Match!</button>
+        </div>
+        <div class="start-menu">
+            <div>
+                <h1>how do you want to play?</h1>
+            </div>
+            <div class="game-mode-options">
+                <button id="multi-1" class="mode-button"><div class="join-room img-div"><img src="/static/images/join-room.gif" alt=""><h3>join room</h3></div></button>
+                <button id="multi-2" class="mode-button"><div class="create-room img-div"><img src="/static/images/create-room.gif" alt=""><h3>create room</h3></div></button>
+                <button id="multi-3" class="mode-button"><div class="random-matchmaking img-div"><img src="/static/images/random-room.gif" alt=""><h3>random matchmaking</h3></div></button>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="header-div">
+            <!-- Timers: player on the left, opponent on the right -->
+        <div class="timer-container hidden">
+            <div class="timer-box" id="player-box">
+                <span>You: </span>
+                <span class="time" id="player-timer">0.00</span>
+            </div>
+
+            <div class="timer-box" id="opponent-box">
+                <span id="enemytitle">Enemy: </span>
+                <span class="time" id="opponent-timer">0.00</span>
+            </div>
+        </div>
+            <div class="main-title">
+                <a href="index.html">TicTacToe</a>
+            </div>
+        </div>
+    </header>
+    <div class="canvas">
+        <div class="main-box">
+            <button id="button-1" class="gen-button"><div id="box-1" class="box"></div></button>
+            <button id="button-2" class="gen-button"><div id="box-2" class="box"></div></button>
+            <button id="button-3" class="gen-button"><div id="box-3" class="box"></div></button>
+            <button id="button-4" class="gen-button"><div id="box-4" class="box"></div></button>
+            <button id="button-5" class="gen-button"><div id="box-5" class="box"></div></button>
+            <button id="button-6" class="gen-button"><div id="box-6" class="box"></div></button>
+            <button id="button-7" class="gen-button"><div id="box-7" class="box"></div></button>
+            <button id="button-8" class="gen-button"><div id="box-8" class="box"></div></button>
+            <button id="button-9" class="gen-button"><div id="box-9" class="box"></div></button>
+            <div id="win-line"></div>
+        </div>
+    </div>
+    <script>
+        let userID = "{{ userID }}";
+    </script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="/static/js/multiplayerscript.js"></script>
+    
+</body>
+</html>

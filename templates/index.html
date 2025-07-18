@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/images/logo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body class="animated-bg">
+    <div class="side-bar">
+        <div class="drag-handle"></div>
+        <div class="player-count animated-bg-text">
+            <h3 id="playerCounter">Players Online: {{playerCount}}</h3>   
+        </div> 
+        <div class="message-board">         
+        </div>
+        <div class="input-box hidden">
+            <input type="text" name="" id="chatInput" placeholder="type something👇">
+            <button id="msgbutton">send</button>
+        </div>
+    </div>
+    <div class="canvas-cover">
+        <div class="login-menu">
+            <div class="login-box">
+                <h2 id="login-text">Enter Your Player ID</h2>
+                <input type="text" id="user-id-input" placeholder="username">
+                <button id="login-button">enter</button>
+            </div>
+        </div>
+
+        <div class="start-menu hidden">   
+                
+            <div class="options-1">
+                <div><h2>I want to start as:-</h2></div>
+            </div>
+            <div class="options">
+                <button id="option-1" class="start-button">
+                <div class="option-text" id="div-1">
+                    <h1>X</h1>
+                </div>
+                </button>
+                <button id="option-2" class="start-button">
+                <div class="option-text" id="div-2">
+                    <h1>O</h1>
+                </div>
+                </button>
+            </div>
+            <div class="game-mode-start-text game-mode">
+                <h2>who do you want to play against?</h2>
+            </div>
+            <div class="game-mode-options game-mode">
+                <button id="mode-1" class="mode-img-buttons"><div class="img-div"  id="mode-11"><img src="/static/images/sad.gif" alt=""><h3>alone?</h3></div></button>
+                <button id="mode-2" class="mode-img-buttons"><div class="img-div" id="mode-22"><img src="/static/images/computer.gif" alt=""><h3>computer</h3></div></button>
+                <button id="mode-3" class="mode-img-buttons"><div class="img-div" id="mode-33"><img src="/static/images/multiplayer.gif" alt=""><h3>multiplayer</h3><p>(coming soon...)</p></div></button>
+            </div>
+        </div>
+        <div class="end-menu">
+            <div id="option-a" class="end-text">
+            <h2>X Won</h2>
+            <h2>wanna try again?</h2>
+            <a href="/"><div class="option-text-1"><h2>restart</h2></div></a>
+            </div>
+            <div id="option-b" class="end-text">
+            <h2>O Won</h2>
+            <h2>wanna try again?</h2>
+            <a href="/"><div class="option-text-1"><h2>restart</h2></div></a>
+            </div>
+            <div id="option-c" class="end-text">
+            <h2>Squares Full!</h2>
+            <h2>wanna try again?</h2>
+            <a href="/"><div class="option-text-1"><h2>restart</h2></div></a>
+            </div>
+            <div id="option-d" class="end-text">
+            <h2>You Won whohooo</h2>
+            <h2>wanna play again?</h2>
+            <a href="/"><div class="option-text-1"><h2>restart</h2></div></a>
+            </div>
+            <div id="option-e" class="end-text">
+            <h2>You Lost!</h2>
+            <h2>wanna try again?</h2>
+            <a href="/"><div class="option-text-1"><h2>restart</h2></div></a>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="header-div">
+            <div class="main-title">
+                <a href="/">TicTacToe</a>
+            </div>
+        </div>
+    </header>
+    <div class="canvas">
+        <div class="main-box">
+            <button id="button-1" class="gen-button"><div id="box-1" class="box"></div></button>
+            <button id="button-2" class="gen-button"><div id="box-2" class="box"></div></button>
+            <button id="button-3" class="gen-button"><div id="box-3" class="box"></div></button>
+            <button id="button-4" class="gen-button"><div id="box-4" class="box"></div></button>
+            <button id="button-5" class="gen-button"><div id="box-5" class="box"></div></button>
+            <button id="button-6" class="gen-button"><div id="box-6" class="box"></div></button>
+            <button id="button-7" class="gen-button"><div id="box-7" class="box"></div></button>
+            <button id="button-8" class="gen-button"><div id="box-8" class="box"></div></button>
+            <button id="button-9" class="gen-button"><div id="box-9" class="box"></div></button>
+            <div id="win-line"></div>
+        </div>
+    </div>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
