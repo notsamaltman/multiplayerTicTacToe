@@ -646,8 +646,8 @@ button:hover{
   .option-text-1 { padding: 0.6rem; }
 
   .img-div {
-    width: 64px;   /* tighter square icons */
-    height: 64px;
+    width: 44px;   /* tighter square icons */
+    height: 44px;
   }
   .img-div img { width: 100%; height: 100%; }
 
@@ -676,11 +676,14 @@ button:hover{
     width: 100%;
     place-items: center;
 }
+.opt-text{
+  font-size: 0.75rem;
+}
 
 .img-div {
-    width: 30vw;
-    height: 30vw;
-    padding: 4px;
+    width: 25vw;
+    height: 25vw;
+    padding: 2px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -695,7 +698,7 @@ button:hover{
 }
 
 .img-div > h3 {
-    font-size: 0.85rem;
+    font-size: 0.65rem;
     margin-top: 4px;
 }
 

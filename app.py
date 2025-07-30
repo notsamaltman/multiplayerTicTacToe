@@ -1,6 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
-from datetime import datetime
+import eventlet
+eventlet.monkey_patch()
+
+from flask import Flask, render_template, redirect, url_for, request
 from flask_socketio import SocketIO, join_room, leave_room, emit
+from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 import random, time, math
 
@@ -644,4 +647,4 @@ def end_draw_match(room):
 ######################### END OF MATCHMAKING ################################
 
 if __name__=='__main__':
-    socketio.run(app=app, debug=False)
+    socketio.run(app=app, debug=True)
