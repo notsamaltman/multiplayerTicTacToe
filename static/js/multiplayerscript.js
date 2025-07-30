@@ -296,6 +296,24 @@ function stopTimers() {
   opponentBox.classList.remove('active');
 }
 
+function resetTimers() {
+  // Reset time values
+  playerTime = 0;
+  opponentTime = 0;
+
+  // Reset display
+  playerTimerEl.textContent = formatTime(playerTime);
+  opponentTimerEl.textContent = formatTime(opponentTime);
+
+  // Optional: Stop any active timer
+  stopTimers();
+
+  // Optional: Reset lastUpdate (if you plan to resume timer later)
+  lastUpdate = null;
+}
+
+
+
 // 🔁 Start the loop
 requestAnimationFrame(update);
 
@@ -665,11 +683,9 @@ function removeEverything() {
         startmenu.classList.remove('hidden');
         timers.classList.add('hidden');
         showGameOverBox('you won on time against '+opponent+' by '+ timediff+'s!');
+        confirmButton.innerText='Confirm Match!';
         removeboxbg();
-        playerTime=0;
-        opponentTime=0;
-        playerBox.classList.remove('active');
-        opponentBox.classList.remove('active');
+        resetTimers();
       }, 2500);
     }
     else
@@ -681,11 +697,9 @@ function removeEverything() {
         startmenu.classList.remove('hidden');
         timers.classList.add('hidden');
         showGameOverBox('you lost on time against '+opponent+' by '+ timediff+'s!');
+        confirmButton.innerText='Confirm Match!';
         removeboxbg();
-        playerTime=0;
-        opponentTime=0;
-        playerBox.classList.remove('active');
-        opponentBox.classList.remove('active');
+        resetTimers();
       }, 2500);
     }
  });
@@ -712,11 +726,9 @@ function removeEverything() {
       startmenu.classList.remove('hidden');
       timers.classList.add('hidden');
       showGameOverBox('you won against '+opponent+'!');
+      confirmButton.innerText='Confirm Match!';
       removeboxbg();
-      playerTime=0;
-      opponentTime=0;
-      playerBox.classList.remove('active');
-      opponentBox.classList.remove('active');
+      resetTimers();
       }, 2500);
   }
   else
@@ -730,12 +742,10 @@ function removeEverything() {
     setTimeout(()=>{
       startmenu.classList.remove('hidden');
       timers.classList.add('hidden');
+      confirmButton.innerText='Confirm Match!';
       showGameOverBox('you lost against '+opponent+'!');
       removeboxbg();
-      playerTime=0;
-      opponentTime=0;
-      playerBox.classList.remove('active');
-      opponentBox.classList.remove('active');
+      resetTimers();
       }, 2500);
   }
  });
@@ -748,11 +758,9 @@ function removeEverything() {
       startmenu.classList.remove('hidden');
       timers.classList.add('hidden');
       showGameOverBox(opponent+' left, You won!!');
+      confirmButton.innerText='Confirm Match!';
       removeboxbg();
-      playerTime=0;
-      opponentTime=0;
-      playerBox.classList.remove('active');
-      opponentBox.classList.remove('active');
+      resetTimers();
       }, 2500);
  });
 
@@ -772,11 +780,7 @@ function routetoMainmenu()
   start_startmenu.classList.remove('fade-out');
   start_startmenu.classList.remove('hidden');
   title.innerText='TicTacToe';
-  playerTime=0;
-  playerTimerEl=0;
-  opponentTime=0;
-  opponentTimerEl=0;
-  stopTimers();
+  resetTimers();
   removeEverything();
 }
 ///////////////////// END OF GAMELOGIC //////////////////////////

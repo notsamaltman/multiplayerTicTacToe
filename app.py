@@ -68,6 +68,7 @@ def start_connection(data):
 
     already_connected = user_id in connected_users.values()
     connected_users[sid] = user_id  # ✅ always store SID
+    playerstatus[user_id] = "idle"
 
     if not already_connected:
         playerCount += 1
@@ -80,8 +81,6 @@ def start_connection(data):
         socketio.emit('diff-id', to=sid)
     else:
         socketio.emit('same-id', to=sid)
-
-    
 
 @socketio.on('disconnect')
 def on_disconnect():
