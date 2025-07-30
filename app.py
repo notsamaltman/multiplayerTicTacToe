@@ -31,6 +31,7 @@ with app.app_context():
 
 
 ####################### DATABASE INFO ###############################
+playerCount = 0
 playerCount = max(playerCount, 0)
 connected_users={}
 multiplayer_users=[]
